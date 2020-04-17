@@ -14,20 +14,12 @@ MYNAME=`basename $0`
 
 if [ ${MYNAME} != "activate-exec.sh" ]; then
     VENV_DIR=${HOME}/${MYNAME%%.*}
-    echo "VENV_DIR=${VENV_DIR}" >&2
-    
     CMDNAME=${MYNAME#*.}
-    echo "CMDNAME=${CMDNAME}" >&2
-
     CMDLINE="${CMDNAME} $*"
-    echo "CMDLINE=${CMDLINE}" >&2
 else
     VENV_DIR=$1
-    echo "VENV_DIR=${VENV_DIR}" >&2
     shift
-
     CMDLINE=$*
-    echo "CMDLINE=${CMDLINE}" >&2
 fi
 
 usage () {
@@ -63,4 +55,5 @@ fi
 echo "VIRTUAL_ENV=$VIRTUAL_ENV" >&2
 
 echo "CMDLINE=$CMDLINE" >&2
+echo >&2
 exec $CMDLINE
